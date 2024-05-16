@@ -1,5 +1,4 @@
-﻿using Capital.Program.Domain.Enums;
-
+﻿
 namespace Capital.Program.API.Controllers
 {
     [Route("api/v1/[controller]")]

@@ -1,5 +1,4 @@
-﻿using Capital.Program.Application.DTOs;
-using FluentValidation;
+﻿
 
 namespace Capital.Program.API.FluentValidations.UserProfile
 {

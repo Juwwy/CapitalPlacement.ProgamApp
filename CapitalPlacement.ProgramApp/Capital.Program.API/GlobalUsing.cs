@@ -11,3 +11,4 @@ global using AutoMapper;
 global using Capital.Program.API.ErrorHandler;
 global using Capital.Program.Infrastructure.Services;
 global using System.Reflection;
+global using Capital.Program.Domain.Enums;

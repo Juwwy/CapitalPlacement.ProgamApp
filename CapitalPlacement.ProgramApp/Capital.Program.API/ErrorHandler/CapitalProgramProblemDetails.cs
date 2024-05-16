@@ -1,5 +1,4 @@
-﻿using Microsoft.AspNetCore.Mvc;
-
+﻿
 namespace Capital.Program.API.ErrorHandler
 {
     public class CapitalProgramProblemDetails : ProblemDetails

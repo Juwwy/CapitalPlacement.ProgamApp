@@ -1,5 +1,4 @@
-﻿using AutoMapper;
-using Capital.Program.Domain.Entities;
+﻿
 
 namespace Capital.Program.API.Helpers.Mapper.AutoMaps
 {

@@ -1,1 +1,1 @@
-﻿
+﻿global using Capital.Program.Domain.Entities;

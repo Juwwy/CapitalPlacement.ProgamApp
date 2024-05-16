@@ -1,5 +1,4 @@
-﻿using Microsoft.AspNetCore.Diagnostics;
-using System.Net;
+﻿
 using ValidationException = Capital.Program.Application.Exceptions.ValidationException;
 
 namespace Capital.Program.API.ErrorHandler

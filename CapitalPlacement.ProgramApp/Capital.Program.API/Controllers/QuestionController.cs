@@ -140,7 +140,7 @@ namespace Capital.Program.API.Controllers
             return Ok(result.Entity);
         }
 
-        [HttpGet("GetQuestionByType")]
+        [HttpPost("GetQuestionByType")]
         public async ValueTask<ActionResult> GetQuestionByType([FromBody] QuestionByTypeDTO dto)
         {
             if (dto == null)
@@ -151,42 +151,77 @@ namespace Capital.Program.API.Controllers
                 var result = await context.MultipleChoiceQuestions
                     .Where(x => x.EmployerProgramId == dto.EmployerProgramId).FirstOrDefaultAsync();
 
-                return Ok(result);
+                return Ok(new MultipleChoiceDTO 
+                {
+                    Question = result.Question,
+                    QuestionTypeId = result.QuestionTypeId,
+                    EmployerProgramId = result.EmployerProgramId,
+                    Choices = result.Choices.Split(',').ToList(),
+                    IsOthers = result.IsOthers,
+                    MaxChoiceAllowed = result.MaxChoiceAllowed
+                });
             }
             else if (string.Equals(dto.QuestionTypeName, QuestionTypes.Dropdown.ToString(), StringComparison.OrdinalIgnoreCase))
             {
                 var result = await context.DropDownQuestions
                     .Where(x => x.EmployerProgramId == dto.EmployerProgramId).FirstOrDefaultAsync();
 
-                return Ok(result);
+                return Ok(new DropDownDTO
+                {
+                    Question = result.Question,
+                    QuestionTypeId = result.QuestionTypeId,
+                    EmployerProgramId = result.EmployerProgramId,
+                    Choices = result.Choices.Split(',').ToList(),
+                    IsOthers = result.IsOthers,
+                });
             }
             else if (string.Equals(dto.QuestionTypeName, QuestionTypes.Paragraph.ToString(), StringComparison.OrdinalIgnoreCase))
             {
                 var result = await context.ParagraphQuestions
                     .Where(x => x.EmployerProgramId == dto.EmployerProgramId).FirstOrDefaultAsync();
 
-                return Ok(result);
+                return Ok(new ParagraphDTO
+                {
+                    Question = result.Question,
+                    QuestionTypeId = result.QuestionTypeId,
+                    EmployerProgramId = result.EmployerProgramId
+                });
             }
             else if (string.Equals(dto.QuestionTypeName, QuestionTypes.Number.ToString(), StringComparison.OrdinalIgnoreCase))
             {
                 var result = await context.NumericQuestions
                     .Where(x => x.EmployerProgramId == dto.EmployerProgramId).FirstOrDefaultAsync();
 
-                return Ok(result);
+                return Ok(new NumericDTO
+                {
+                    Question = result.Question,
+                    QuestionTypeId = result.QuestionTypeId,
+                    EmployerProgramId = result.EmployerProgramId
+                });
             }
             else if (string.Equals(dto.QuestionTypeName, QuestionTypes.YesNo.ToString(), StringComparison.OrdinalIgnoreCase))
             {
                 var result = await context.YesNoQuestions
                     .Where(x => x.EmployerProgramId == dto.EmployerProgramId).FirstOrDefaultAsync();
 
-                return Ok(result);
+                return Ok(new YesNoDTO
+                {
+                    Question = result.Question,
+                    QuestionTypeId = result.QuestionTypeId,
+                    EmployerProgramId = result.EmployerProgramId
+                });
             }
             else if (string.Equals(dto.QuestionTypeName, QuestionTypes.Date.ToString(), StringComparison.OrdinalIgnoreCase))
             {
                 var result = await context.DateQuestions
                     .Where(x => x.EmployerProgramId == dto.EmployerProgramId).FirstOrDefaultAsync();
 
-                return Ok(result);
+                return Ok(new DateQuestionDTO
+                {
+                    Question = result.Question,
+                    QuestionTypeId = result.QuestionTypeId,
+                    EmployerProgramId = result.EmployerProgramId
+                });
             }
             else
             { 

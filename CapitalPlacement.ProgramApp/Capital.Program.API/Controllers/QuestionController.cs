@@ -28,7 +28,7 @@ namespace Capital.Program.API.Controllers
 
             var existingTypes = await questionServices.GetQuestionTypes();
 
-            if (existingTypes.Count() < 0)
+            if (existingTypes.Count() < questionTypes)
             {
                 var qTyp = new List<QuestionType>();
 
